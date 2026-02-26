@@ -2,12 +2,54 @@
 <html lang="uk">
 <head>
     <meta charset="UTF-8">
-    <meta name="author" content="Станіслав">
-    <title>F1 - Команди</title>
+    <title>F1 - Кубок Конструкторів</title>
+    <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
-    <h1>Учасники кубку конструкторів</h1>
-    <a href="index.html">Повернутися назад</a>
-    <p>Ferrari, Mercedes, Aston Martin.</p>
+    <div class="container">
+        <h1>Кубок Конструкторів</h1>
+        <nav>
+            <a href="index.html">На головну</a>
+        </nav>
+
+        <p>Таблиця результатів із складним форматуванням.</p>
+        
+        <table border="1">
+            <colgroup>
+                <col style="background-color: #fff0f0;">
+                <col span="2">
+            </colgroup>
+
+            <tr>
+                <th colspan="3">Результати сезону 2026</th>
+            </tr>
+            
+            <tr>
+                <th>Команда</th>
+                <th>Пілот</th>
+                <th>Очки</th>
+            </tr>
+
+            <tr>
+                <td rowspan="2"><b>Red Bull Racing</b></td>
+                <td>Макс Ферстаппен</td>
+                <td>250</td>
+            </tr>
+            <tr>
+                <td>Ліам Лоусон</td>
+                <td>120</td>
+            </tr>
+
+            <tr>
+                <td rowspan="2"><b>McLaren</b></td>
+                <td>Ландо Норріс</td>
+                <td>210</td>
+            </tr>
+            <tr>
+                <td>Оскар Піастрі</td>
+                <td>190</td>
+            </tr>
+        </table>
+    </div>
 </body>
 </html>
