@@ -136,3 +136,22 @@ tr:hover {
     border-radius: 50%;
     border: 3px solid #e10600;
 }
+
+h2#rules + p {
+    font-weight: bold;
+    font-size: 1.1em;
+    color: #003057;
+    border-left: 4px solid #003057;
+    padding-left: 10px;
+}
+
+.tech-details p {
+    background-color: #f0f8ff;
+    padding: 10px;
+    border-radius: 5px;
+    margin-bottom: 10px;
+}
+
+.tech-details > p {
+    border: 2px solid #e10600;
+}
