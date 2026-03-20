@@ -8,43 +8,55 @@
 <body>
     <div class="container">
         <h1>Наші Пілоти</h1>
+        
         <nav>
             <a href="index.html">На головну</a>
+            <a href="teams.html">Конструктори</a>
+            <a href="calendar.html">Календар</a>
         </nav>
 
-        <h3>Галерея</h3>
-        <p>Клікни на фото, щоб відкрити оригінал:</p>
-        
-        <a href="img/hamilton.jpg" target="_blank">
-            <img src="img/hamilton.jpg" width="300" style="border-radius: 10px; border: 2px solid #333;" alt="Льюїс Гемілтон">
-        </a>
+        <div class="driver-spotlight clearfix">
+            <a href="img/hamilton.jpg" target="_blank">
+                <img src="img/hamilton.jpg" class="float-img" alt="Льюїс Гемілтон">
+            </a>
+            <h3>Легенда на трасі</h3>
+            <p>
+                Льюїс Гемілтон — <span class="inline-highlight">семиразовий чемпіон світу</span>, 
+                який у сезоні 2026 продовжує свою кар'єру в складі легендарної Скудерії Феррарі. 
+                Його перехід до італійської команди став однією з найгучніших подій в історії автоспорту. 
+                Він приніс із собою колосальний досвід та неймовірну мотивацію. 
+                Експерти вважають, що тандем британця та інженерів з Маранелло може стати ключовим фактором у боротьбі за титул.
+                Чи зможе він здобути свій рекордний восьмий чемпіонський кубок у червоному комбінезоні?
+            </p>
+        </div>
 
         <h3>Склад команди Ferrari</h3>
         
-        <table border="1">
-            <tr> 
-                <th>Фото</th>
-                <th>Профіль</th>
-                <th>Ім'я</th>
-            </tr>
-            
-            <tr>
-                <td align="center"><img src="img/hamilton.jpg" class="driver-photo" alt="Hamilton"></td>
-                <td><a href="https://www.formula1.com/en/drivers/lewis-hamilton.html" target="_blank">Профіль</a></td>
-                <td>Льюїс Гемілтон</td>
-            </tr>
-            
-            <tr>
-                <td align="center"><img src="img/leclerc.jpg" class="driver-photo" alt="Leclerc"></td>
-                <td><a href="https://www.formula1.com/en/drivers/charles-leclerc.html" target="_blank">Профіль</a></td>
-                <td>Шарль Леклер</td>
-            </tr>
-            
-            <tr>
-                <td align="center"><img src="img/bearman.jpg" class="driver-photo" alt="Bearman"></td>
-                <td><a href="https://www.formula1.com/en/drivers/oliver-bearman.html" target="_blank">Профіль</a></td>
-                <td>Олівер Берман</td>
-            </tr>
+        <table class="styled-table">
+            <thead>
+                <tr> 
+                    <th>Фото</th>
+                    <th>Профіль</th>
+                    <th>Ім'я</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><img src="img/hamilton.jpg" class="driver-photo" alt="Hamilton"></td>
+                    <td><a href="https://www.formula1.com/en/drivers/lewis-hamilton.html" class="profile-link" target="_blank">Офіційний профіль</a></td>
+                    <td>Льюїс Гемілтон</td>
+                </tr>
+                <tr>
+                    <td><img src="img/leclerc.jpg" class="driver-photo" alt="Leclerc"></td>
+                    <td><a href="https://www.formula1.com/en/drivers/charles-leclerc.html" class="profile-link" target="_blank">Офіційний профіль</a></td>
+                    <td>Шарль Леклер</td>
+                </tr>
+                <tr>
+                    <td><img src="img/bearman.jpg" class="driver-photo" alt="Bearman"></td>
+                    <td><a href="https://www.formula1.com/en/drivers/oliver-bearman.html" class="profile-link" target="_blank">Офіційний профіль</a></td>
+                    <td>Олівер Берман</td>
+                </tr>
+            </tbody>
         </table>
     </div>
 </body>
