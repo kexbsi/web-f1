@@ -68,10 +68,68 @@
             <dd>Зупинка в боксах для швидкої заміни шин та ремонту.</dd>
         </dl>
 
+        <hr style="margin: 40px 0; border: 1px solid #ccc;">
+
+        <div style="background: #f9f9f9; padding: 20px; border-left: 4px solid #e10600; border-radius: 4px;">
+            <h3 style="margin-top: 0;">📡 Live: Телеметрія сесії</h3>
+            
+            <div style="margin-bottom: 15px;">
+                <button class="action-btn" onclick="addNews()">➕ Додати новину</button>
+                <button class="action-btn" style="background: #003057;" onclick="replaceStatus()">🔄 Змінити статус</button>
+                <button class="action-btn" style="background: darkred;" onclick="deleteOldestNews()">🗑️ Видалити стару</button>
+            </div>
+
+            <p style="font-size: 18px; font-weight: bold;">Статус: <span id="track-status" style="color: green;">Траса вільна</span></p>
+            
+            <div id="live-feed-box" style="margin-top: 15px; padding: 10px; border: 1px solid #ddd; background: #fff; min-height: 50px;">
+                <div class="feed-item">🟢 Сесію розпочато. Всі боліди на трасі.</div>
+            </div>
+        </div>
+
+        <div style="margin-top: 20px; text-align: center;">
+            <button onclick="activateVSC()" style="padding: 10px 20px; background: #ffcc00; color: #000; font-weight: bold; border: none; cursor: pointer; border-radius: 4px;">
+                ⚠️ Дирекція гонки: Активація VSC
+            </button>
+            
+            <script>
+                function activateVSC() {
+                    let sector = prompt("Введіть номер сектору для активації жовтих прапорів (1-3):", "2");
+                    if (sector) {
+                        let isConfirmed = confirm(`Підтверджуєте активацію VSC на секторі ${sector}?`);
+                        if (isConfirmed) {
+                            alert("VSC активовано! Швидкість обмежена. Фон змінено на 30 секунд.");
+                            
+                            let originalBgColor = document.body.style.backgroundColor;
+                            let originalBgImage = document.body.style.backgroundImage;
+                            
+                            document.body.style.backgroundImage = "none";
+                            document.body.style.backgroundColor = "#ffcc00";
+                            
+                            setTimeout(() => {
+                                document.body.style.backgroundColor = originalBgColor;
+                                document.body.style.backgroundImage = originalBgImage;
+                                alert("VSC завершено. Зелені прапори!");
+                            }, 30000);
+                        }
+                    }
+                }
+            </script>
+        </div>
+
+        <div style="text-align: center; margin-top: 20px;">
+            <button class="action-btn" onclick="startFanQuiz()">🏆 Фан-квіз</button>
+            <button class="action-btn" style="background:#333;" onclick="showDeveloper('Рудь', 'Станіслав')">Про розробника</button>
+        </div>
+
+        <script>
+            document.write('<div style="background: #111; color: #fff; padding: 15px; text-align: center; margin-top: 30px; border-radius: 5px; font-family: sans-serif;">📺 Офіційний транслятор сезону: <strong style="color: #e10600;">Setanta Sports</strong></div>');
+        </script>
         <p style="text-align: center; margin-top: 40px;">
             <a href="#top" style="color: #003057; font-weight: bold; text-decoration: none;">⬆ Повернутися вгору</a>
         </p>
         
     </div>
+
+    <script src="js/script.js"></script>
 </body>
 </html>
