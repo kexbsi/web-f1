@@ -1,13 +1,15 @@
-// 1. Функція діалогу з користувачем (змінні, умови, цикли)
+// ==========================================
+// БАЗОВІ ФУНКЦІЇ ПОРТАЛУ
+// ==========================================
+
 function startFanQuiz() {
     let userName = prompt("Вітаємо у Паддоку! Як вас звати?");
     if (!userName) return;
 
     let races = 0;
-    // Цикл: питаємо, поки не введе число 24
     while (races !== 24) {
         let answer = prompt(`Привіт, ${userName}! Скільки Гран-прі заплановано в календарі 2026 року? (Підказка: 24)`);
-        if (answer === null) break; // скасування
+        if (answer === null) break; 
         races = parseInt(answer);
         
         if (races === 24) {
@@ -18,12 +20,10 @@ function startFanQuiz() {
     }
 }
 
-// 2. Інформація про розробника (параметр "посада" за замовчуванням)
 function showDeveloper(surname, name, position = "Студент ФІОТ") {
     alert(`Розробник порталу:\nПрізвище: ${surname}\nІм'я: ${name}\nПосада: ${position}`);
 }
 
-// 3. Порівняння двох рядків (виклик на сторінці Пілотів)
 function compareDriverNames() {
     let name1 = prompt("Введіть прізвище першого пілота:");
     let name2 = prompt("Введіть прізвище другого пілота:");
@@ -39,15 +39,10 @@ function compareDriverNames() {
     }
 }
 
-// 4. BOM: Перенаправлення (виклик на сторінці Календаря)
 function buyTickets() {
-    // Перенаправлення за допомогою location
     location.assign("https://tickets.formula1.com/");
 }
 
-// 5. DOM: Робота з вузлами (Стрічка новин на Головній) - ТРИ ФУНКЦІЇ
-
-// 5.1. Функція додавання (append, prepend, after, createElement, innerHTML)
 function addNews() {
     let feed = document.getElementById('live-feed-box');
     if (!feed) {
@@ -55,7 +50,6 @@ function addNews() {
         return;
     }
 
-    // Створення вузлів
     let newItem = document.createElement('div');
     newItem.className = 'feed-item';
     newItem.style.color = "#e10600";
@@ -63,27 +57,24 @@ function addNews() {
     newItem.style.padding = "5px 0";
 
     let textNode = document.createTextNode('Шаблон');
-    textNode.nodeValue = '🔴 ' + new Date().toLocaleTimeString() + ' - Пілот заїжджає на піт-стоп!'; // nodeValue / data
+    textNode.nodeValue = '🔴 ' + new Date().toLocaleTimeString() + ' - Пілот заїжджає на піт-стоп!'; 
     
-    newItem.append(textNode); // append
-    feed.prepend(newItem); // prepend (на початок стрічки)
+    newItem.append(textNode); 
+    feed.prepend(newItem); 
 
-    // Додаємо або оновлюємо підпис часу під дошкою (after)
     let oldTimestamp = document.getElementById('feed-time');
     if (oldTimestamp) oldTimestamp.remove(); 
 
     let timestamp = document.createElement('p');
     timestamp.id = 'feed-time';
-    timestamp.innerHTML = `<small style="color:gray;">Остання активність: ${new Date().toLocaleTimeString()}</small>`; // innerHTML
-    feed.after(timestamp); // after
+    timestamp.innerHTML = `<small style="color:gray;">Остання активність: ${new Date().toLocaleTimeString()}</small>`; 
+    feed.after(timestamp); 
 }
 
-// 5.2. Функція заміни (replaceWith, textContent)
 function replaceStatus() {
     let statusSpan = document.getElementById('track-status');
     if (statusSpan) {
         let newStatus = document.createElement('span');
-        // Якщо зараз "Траса вільна", міняємо на "Піт-лейн активний", і навпаки
         let currentText = statusSpan.textContent;
         newStatus.textContent = (currentText === "Траса вільна") ? "Піт-лейн активний" : "Траса вільна";
         
@@ -95,15 +86,116 @@ function replaceStatus() {
     }
 }
 
-// 5.3. Функція видалення (querySelectorAll, remove, outerHTML)
 function deleteOldestNews() {
-    let allItems = document.querySelectorAll('.feed-item'); // Шукаємо всі новини
+    let allItems = document.querySelectorAll('.feed-item'); 
     
     if (allItems.length > 0) {
-        let oldestItem = allItems[allItems.length - 1]; // Беремо останню в списку (найстарішу)
-        console.log("Видалено з DOM: " + oldestItem.outerHTML); // outerHTML - виводимо в консоль
-        oldestItem.remove(); // remove() видалення зі сторінки
+        let oldestItem = allItems[allItems.length - 1]; 
+        console.log("Видалено з DOM: " + oldestItem.outerHTML); 
+        oldestItem.remove(); 
     } else {
         alert("Стрічка новин порожня! Немає що видаляти.");
     }
 }
+
+//Lab7
+
+const trackManager = {
+    handleEvent(event) {
+        console.log(`Система: Подія ${event.type} на кнопці збереження`);
+        
+        switch(event.type) {
+            case 'mousedown':
+                event.currentTarget.style.transform = 'scale(0.95)';
+                event.currentTarget.innerText = "⏳ Обробка запиту...";
+                break;
+            case 'mouseup':
+                event.currentTarget.style.transform = 'scale(1)';
+                
+                let selectedTeam = document.querySelector('.selected-item');
+                
+                if (selectedTeam) {
+                    alert(`Вибір підтверджено! Ваша улюблена команда: ${selectedTeam.innerText}. Дані збережено!`);
+                    
+                    event.currentTarget.removeEventListener('mousedown', this);
+                    event.currentTarget.removeEventListener('mouseup', this);
+                    
+                    event.currentTarget.style.opacity = '0.5';
+                    event.currentTarget.style.cursor = 'not-allowed';
+                    event.currentTarget.style.background = '#222';
+                    event.currentTarget.innerText = "✔️ Вибір збережено";
+                    
+                    document.querySelector('.highlight-list').style.pointerEvents = 'none';
+                    document.querySelector('.highlight-list').style.opacity = '0.7';
+                } else {
+                    alert("Спочатку оберіть команду зі списку вище!");
+                    event.currentTarget.innerText = "💾 Зберегти мій вибір";
+                }
+                break;
+        }
+    }
+};
+
+function setupInitialEvents() {
+    const mainTitle = document.querySelector('h1');
+    if (mainTitle) {
+        mainTitle.onmouseover = () => mainTitle.style.color = '#e10600';
+        mainTitle.onmouseout = () => mainTitle.style.color = '';
+    }
+
+    const saveBtn = document.getElementById('test-event-btn');
+    if (saveBtn) {
+        saveBtn.addEventListener('mousedown', trackManager);
+        saveBtn.addEventListener('mouseup', trackManager);
+    }
+
+    const devBtn = document.getElementById('dev-btn');
+    if (devBtn) {
+        devBtn.addEventListener('click', function() {
+            console.log("Обробник 1: Зафіксовано клік по кнопці розробника.");
+        });
+        devBtn.addEventListener('click', function() {
+            console.log("Обробник 2: Відправка логів до бази даних...");
+        });
+    }
+}
+
+window.addEventListener('DOMContentLoaded', setupInitialEvents);
+
+document.addEventListener('click', function(event) {
+    let li = event.target.closest('.highlight-list li');
+    if (!li) return; 
+    
+    li.parentElement.querySelectorAll('li').forEach(el => {
+        el.classList.remove('selected-item');
+        el.style.backgroundColor = 'white';
+        el.style.color = 'black';
+    });
+
+    li.classList.add('selected-item');
+    li.style.backgroundColor = '#e10600';
+    li.style.color = 'white';
+});
+
+class MenuActions {
+    constructor(elem) {
+        this._elem = elem;
+        elem.onclick = this.onClick.bind(this);
+    }
+
+    camera() { alert('Перемикання трансляції на Onboard-камеру...'); }
+    timing() { alert('Відкриття таблиці по-секторного часу та відривів...'); }
+    radio() { alert('Підключення до радіоканалу гоночного інженера...'); }
+
+    onClick(event) {
+        let action = event.target.dataset.action;
+        if (action) {
+            this[action]();
+        }
+    }
+}
+
+document.addEventListener('DOMContentLoaded', () => {
+    const menuElem = document.getElementById('race-menu');
+    if (menuElem) new MenuActions(menuElem);
+});

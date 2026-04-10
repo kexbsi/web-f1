@@ -84,6 +84,13 @@
             <div id="live-feed-box" style="margin-top: 15px; padding: 10px; border: 1px solid #ddd; background: #fff; min-height: 50px;">
                 <div class="feed-item">🟢 Сесію розпочато. Всі боліди на трасі.</div>
             </div>
+
+            <div id="race-menu" style="margin-top: 20px; padding-top: 15px; border-top: 2px dashed #ccc;">
+                <h4 style="margin-top: 0; color: #003057; text-align: left;">Додаткові функції F1 TV</h4>
+                <button class="action-btn" data-action="camera" style="background: #222;">🎥 Onboard-камера</button>
+                <button class="action-btn" data-action="timing" style="background: #222;">⏱ Live-таймінг</button>
+                <button class="action-btn" data-action="radio" style="background: #222;">📻 Радіо команд</button>
+            </div>
         </div>
 
         <div style="margin-top: 20px; text-align: center;">
@@ -97,7 +104,7 @@
                     if (sector) {
                         let isConfirmed = confirm(`Підтверджуєте активацію VSC на секторі ${sector}?`);
                         if (isConfirmed) {
-                            alert("VSC активовано! Швидкість обмежена. Фон змінено на 30 секунд.");
+                            alert("VSC активовано! Швидкість обмежена.");
                             
                             let originalBgColor = document.body.style.backgroundColor;
                             let originalBgImage = document.body.style.backgroundImage;
@@ -118,8 +125,27 @@
 
         <div style="text-align: center; margin-top: 20px;">
             <button class="action-btn" onclick="startFanQuiz()">🏆 Фан-квіз</button>
-            <button class="action-btn" style="background:#333;" onclick="showDeveloper('Рудь', 'Станіслав')">Про розробника</button>
+            <button id="dev-btn" class="action-btn" style="background:#333;" onclick="showDeveloper('Рудь', 'Станіслав')">Про розробника</button>
         </div>
+
+        <section style="margin-top: 40px; padding: 20px; border: 2px dashed #003057; border-radius: 8px; background-color: #f8f9fa;">
+            <h2 style="color: #003057; margin-top: 0;">Інтерактивна панель вболівальника</h2>
+
+            <div>
+                <h4>Опитування: Ваш фаворит на Кубок Конструкторів</h4>
+                <p>1. Оберіть команду зі списку:</p>
+                <ul class="highlight-list" style="cursor: pointer; padding-left: 0; margin-bottom: 15px;">
+                    <li style="padding: 10px; list-style: none; border: 1px solid #ddd; margin-bottom: 5px; border-radius: 4px; background: white;">Ferrari (Leclerc / Hamilton)</li>
+                    <li style="padding: 10px; list-style: none; border: 1px solid #ddd; margin-bottom: 5px; border-radius: 4px; background: white;">Red Bull (Verstappen / Lawson)</li>
+                    <li style="padding: 10px; list-style: none; border: 1px solid #ddd; margin-bottom: 5px; border-radius: 4px; background: white;">McLaren (Norris / Piastri)</li>
+                    <li style="padding: 10px; list-style: none; border: 1px solid #ddd; margin-bottom: 5px; border-radius: 4px; background: white;">Mercedes (Russell / Antonelli)</li>
+                </ul>
+
+                <p>2. Підтвердіть свій вибір:</p>
+                <button id="test-event-btn" class="action-btn" style="background: #003057; color: white; width: 100%;">💾 Зберегти мій вибір</button>
+                <p style="font-size: 0.85em; color: #666; margin-top: 5px;">* Після натискання вибір буде заблоковано до кінця сесії.</p>
+            </div>
+        </section>
 
         <script>
             document.write('<div style="background: #111; color: #fff; padding: 15px; text-align: center; margin-top: 30px; border-radius: 5px; font-family: sans-serif;">📺 Офіційний транслятор сезону: <strong style="color: #e10600;">Setanta Sports</strong></div>');

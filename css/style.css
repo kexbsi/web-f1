@@ -19,7 +19,7 @@ body {
     padding: 40px;
     border-radius: 12px;
     box-shadow: 0 15px 40px rgba(0,0,0,0.6);
-    position: relative; /* Lab 5: Відносне позиціонування */
+    position: relative;
 }
 
 h1, h2, h3 {
@@ -109,11 +109,7 @@ h2#rules + p {
     border: 2px solid #e10600;
 }
 
-/* =========================================
-   ЕЛЕМЕНТИ ЛАБОРАТОРНОЇ №5
-========================================= */
-
-/* Lab 5: Псевдоелементи */
+/* Псевдоелементи */
 .title-teams::before {
     content: "🏆 ";
 }
@@ -121,14 +117,14 @@ h2#rules + p {
     content: " 🏆";
 }
 
-/* Lab 5: Псевдоклас :first-child */
+/* Виділення першого рядка таблиці */
 .styled-table tbody tr:first-child td {
     background-color: #fff8e1;
     font-weight: bold;
     color: #b8860b;
 }
 
-/* Lab 5: Блочний елемент */
+/* Картка пілота */
 .driver-spotlight {
     background-color: #f4f4f4;
     padding: 20px;
@@ -137,7 +133,7 @@ h2#rules + p {
     border-left: 5px solid #003057;
 }
 
-/* Lab 5: Обтікання (float) */
+/* Обтікання зображень */
 .float-img {
     float: left;
     width: 250px;
@@ -147,7 +143,7 @@ h2#rules + p {
     box-shadow: 0 4px 10px rgba(0,0,0,0.3);
 }
 
-/* Lab 5: Рядковий елемент (inline) */
+/* Виділення тексту */
 .inline-highlight {
     background-color: #ffe600;
     color: #000;
@@ -163,7 +159,7 @@ h2#rules + p {
     display: table;
 }
 
-/* Lab 5: Псевдокласи посилань */
+/* Стилізація посилань */
 .profile-link:link {
     color: #003057;
     text-decoration: none;
@@ -180,7 +176,7 @@ h2#rules + p {
     color: #00a859;
 }
 
-/* Lab 5: Абсолютне позиціонування */
+/* Бейдж Live */
 .badge-live {
     position: absolute; 
     top: -15px;
@@ -204,10 +200,7 @@ h2#rules + p {
     box-shadow: 0 4px 12px rgba(0,0,0,0.2);
 }
 
-
-
-/* ЛАБОРАТОРНА №6*/
-
+/* Кнопки та віджети */
 .action-btn {
     background-color: #e10600;
     color: white;
@@ -237,4 +230,31 @@ h2#rules + p {
     margin: 30px 0;
     border-radius: 0 8px 8px 0;
     box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+}
+
+/* lab7 */
+
+.highlight-list li {
+    padding: 10px;
+    margin-bottom: 5px;
+    list-style: none;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    background-color: #fff;
+    transition: all 0.3s ease;
+}
+
+.highlight-list li:hover {
+    background-color: #f8f9fa;
+    border-color: #bbb;
+}
+
+.selected-item {
+    background-color: #e10600 !important;
+    color: white !important;
+    font-weight: bold;
+    padding-left: 20px !important;
+    border-color: #e10600 !important;
+    transform: scale(1.02);
+    box-shadow: 0 4px 8px rgba(225, 6, 0, 0.2);
 }
